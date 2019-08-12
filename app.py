@@ -5,6 +5,22 @@ app = Flask(__name__)
 assist = Assistant(app, route='/google', project_id='home-59465')
 
 
+@assist.action('turn-on-the-tv')
+def turn_on_the_tv():
+    print()
+    print("TURN ON THE TV")
+    print()
+    return tell("Sure, i'm turning on your TV")
+
+
+@assist.action('turn-on-the-ac')
+def turn_on_the_ac():
+    print()
+    print("TURN ON THE AC")
+    print()
+    return tell("Sure, i'm turning on your AC")
+
+
 @assist.action('member-count')
 def google_member_count():
     print()
