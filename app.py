@@ -5,28 +5,45 @@ app = Flask(__name__)
 assist = Assistant(app, route='/google', project_id='home-59465')
 
 
-@assist.action('turn-on-the-tv')
-def turn_on_the_tv():
+# TODO: go_to_channel
+
+@assist.action('turn-on-off-the-tv')
+def turn_on_off_the_tv(tv_on_off):
     print()
-    print("TURN ON THE TV")
+    print(f"TURN {tv_on_off.upper()} THE TV")
     print()
-    return tell("Sure, i'm turning on your TV")
+    # TODO: send to serial
+
+    if tv_on_off == "on":
+        return ask(f"Sure, i'm turning {tv_on_off} your TV. \
+            Do you want anything else?")
+    else:
+        return tell(f"Sure, i'm turning {tv_on_off} your TV")
 
 
-@assist.action('turn-on-the-ac')
-def turn_on_the_ac():
+@assist.action('increase-volume')
+def increase_volume(volume):
+    volume = int(volume)
     print()
-    print("TURN ON THE AC")
+    print(f"INCREASE THE VOLUME BY {volume}")
     print()
-    return tell("Sure, i'm turning on your AC")
+    # TODO: maybe need to convert from strint to integer
+    # TODO: send to serial
+    # return tell(f"Sure, i'm increasing the volume by {volume}")
+    return ask(f"Sure, i'm increasing the volume by {volume}. \
+        Do you want anything else?")
 
 
-@assist.action('member-count')
-def google_member_count():
+@assist.action('decrease-volume')
+def increase_volume(volume):
+    volume = int(volume)
     print()
-    print('GOOGLE MEMBER COUNT')
+    print(f"DECREASE THE VOLUME BY {volume}")
     print()
-    return tell('Hello there')
+    # TODO: maybe need to convert from strint to integer
+    # TODO: send to serial
+    return ask(f"Sure, i'm decreasing the volume by {volume}. \
+        Do you want anything else?")
 
 
 @assist.action('greeting')
